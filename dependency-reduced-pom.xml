@@ -75,6 +75,33 @@
                   <arg />
                   <arg />
                 </exec>
+                <exec>
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                </exec>
+                <exec>
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                  <arg />
+                </exec>
               </target>
             </configuration>
           </execution>
