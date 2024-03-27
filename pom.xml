@@ -243,7 +243,7 @@
                                     <arg value="C:\Users\simog\Documents\GitHub\AngleGame\target\jre"/>
 
                                     <arg value="--type"/>
-                                    <arg value="dmg"/>
+                                    <arg value="exe"/>
 
                                     <arg value="--dest"/>
                                     <arg value="C:\Users\simog\Documents\GitHub\AngleGame\target"/>

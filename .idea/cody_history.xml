@@ -379,9 +379,33 @@
                 <speaker value="ASSISTANT" />
                 <text value="Ecco la configurazione completa con exec-maven-plugin per aggiungere un collegamento all'eseguibile dell'applicazione sul desktop di Windows durante la fase `package`:&#10;&#10;```xml&#10;&lt;plugin&gt;&#10;  &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;&#10;  &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;&#10;  &lt;version&gt;1.6.0&lt;/version&gt;&#10;&#10;  &lt;executions&gt;&#10;    &lt;execution&gt;&#10;      &lt;id&gt;create-desktop-shortcut&lt;/id&gt; &#10;      &lt;phase&gt;package&lt;/phase&gt;&#10;      &lt;goals&gt;&#10;        &lt;goal&gt;exec&lt;/goal&gt;&#10;      &lt;/goals&gt;&#10;      &lt;configuration&gt;&#10;        &lt;executable&gt;powershell.exe&lt;/executable&gt;&#10;        &lt;arguments&gt;&#10;          &lt;argument&gt;-Command&lt;/argument&gt;  &#10;          &lt;argument&gt;&#10;            New-Item -Path $env:USERPROFILE\Desktop\AngleGame.lnk -TargetPath &quot;C:\Program Files\AngleGame\AngleGame.exe&quot; -IconLocation &quot;C:\Program Files\AngleGame\icon.ico&quot; -Description &quot;Play Angle Game&quot;  &#10;          &lt;/argument&gt;&#10;        &lt;/arguments&gt; &#10;      &lt;/configuration&gt;&#10;    &lt;/execution&gt;&#10;  &lt;/executions&gt;&#10;&lt;/plugin&gt;&#10;```&#10;&#10;Riassumendo:&#10;&#10;- Durante la fase `package` verrà eseguito Powershell&#10;- Verrà passato il comando per generare il collegamento contenuto in `&lt;argument&gt;`&#10;- Il collegamento punterà all'eseguibile in `C:\Program Files\AngleGame`&#10;&#10;Naturalmente i percorsi e il nome del collegamento possono essere modificati secondo necessità.&#10;&#10;Fammi sapere se questa configurazione riesce a generare il collegamento come previsto!" />
               </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="come carico un relase su github?" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value="Ecco i passaggi per creare e pubblicare una release di un progetto su GitHub:&#10;&#10;**1. Crea un tag nella versione che vuoi rilasciare**&#10;&#10;Usa il comando `git tag` per creare un tag annotato. Ad esempio:&#10;&#10;```&#10;git tag -a v1.0.0 -m &quot;Versione 1.0.0&quot;&#10;```&#10;&#10;**2. Pusha il tag su GitHub** &#10;&#10;Usa `git push` per pushare il tag appena creato:&#10;&#10;```&#10;git push origin v1.0.0&#10;```&#10;&#10;**3. Crea la release su GitHub**&#10;&#10;Nella pagina del tuo repository su GitHub, vai in &quot;Releases&quot; e clicca su &quot;Draft a new release&quot;. &#10;&#10;Seleziona il tag che hai pushato prima come versione e compila il titolo e la descrizione.&#10;&#10;**4. Allega i file binaries**&#10;&#10;In &quot;Attach binaries&quot; puoi trascinare i file `.zip`, `.exe`, ecc. che vuoi distribuire nella release.&#10;&#10;**5. Pubblica la release**&#10;&#10;Verifica che tutto sia corretto e clicca &quot;Publish release&quot; per renderla disponibile al download.&#10;&#10;Et voilà! La tua release è pubblicata su GitHub con tanto di changelog generato dai commit.&#10;&#10;Fammi sapere se hai bisogno di qualche chiarimento sui passaggi!" />
+              </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="ok voglio chiamare l'exe pubblicato Angle e la versione è la 1.0 scrivimi i comandi" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value="Per pubblicare la release 1.0 dell'eseguibile Angle su GitHub, puoi seguire questi comandi:&#10;&#10;Prima assicurati di essere posizionato nel branch corretto con il codice da rilasciare.&#10;&#10;Crea il tag 1.0:&#10;&#10;```&#10;git tag -a v1.0 -m &quot;Release versione 1.0&quot;&#10;```&#10;&#10;Pusha il tag su GitHub:&#10;&#10;```&#10;git push origin v1.0&#10;```&#10;&#10;A questo punto su GitHub nella pagina del progetto, vai in &quot;Releases&quot; e clicca su &quot;Draft new release&quot;.&#10;&#10;Seleziona il tag `v1.0` appena creato in &quot;Choose a tag&quot;.&#10;&#10;Compila il titolo con &quot;Angle v1.0&quot; e aggiungi una descrizione.&#10;&#10;In &quot;Attach binaries&quot; trascina il file `Angle.exe` da rilasciare.&#10;&#10;Verifica che tutto sia ok e clicca su &quot;Publish release&quot;.&#10;&#10;La release 1.0 di Angle contenente l'eseguibile è ora pubblicata! &#10;&#10;Gli utenti possono scaricarla dalla pagina Releases.&#10;&#10;Fammi sapere se hai bisogno di qualche chiarimento sui passaggi o se riscontri problemi durante la pubblicazione." />
+              </message>
+              <message>
+                <speaker value="HUMAN" />
+                <text value="in che directory eseguo questi comandi?" />
+              </message>
+              <message>
+                <speaker value="ASSISTANT" />
+                <text value="I comandi per creare e pubblicare una release su GitHub vanno eseguiti all'interno della directory locale del tuo progetto Git. &#10;&#10;Di solito i passaggi sono:&#10;&#10;1. Posizionati nella cartella del progetto da linea di comando:&#10;&#10;```&#10;cd percorso/al/progetto&#10;```&#10;&#10;2. Assicurati di essere sul branch corretto che vuoi rilasciare, ad esempio `main`:&#10;&#10;```&#10;git checkout main&#10;```&#10;&#10;3. Crea il tag della release:&#10;&#10;```&#10;git tag -a v1.0 -m &quot;Release 1.0&quot; &#10;```&#10;&#10;4. Pusha il tag su GitHub:&#10;&#10;```&#10;git push origin v1.0&#10;```&#10;&#10;5. Vai su GitHub e crea la release basata sul tag appena pushato&#10;&#10;Quindi in sintesi, devi eseguire i comandi `git tag` e `git push` all'interno della cartella del progetto Git in locale, dopo di che puoi completare il processo di creazione della release direttamente dall'interfaccia web di GitHub.&#10;&#10;Fammi sapere se questo chiarisce dove eseguire i vari passaggi o se hai altre domande!" />
+              </message>
             </list>
           </messages>
-          <updatedAt value="2024-03-27T21:03:32.598049" />
+          <updatedAt value="2024-03-27T21:24:15.243746" />
         </chat>
         <chat>
           <accountId value="VXNlcjozNjE4NDk=" />
