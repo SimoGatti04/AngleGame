@@ -271,30 +271,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-
-                <executions>
-                    <execution>
-                        <id>create-desktop-shortcut</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>powershell.exe</executable>
-                            <arguments>
-                                <argument>-Command</argument>
-                                <argument>
-                                    New-Item -Path $env:USERPROFILE\Desktop\AngleGame.lnk -TargetPath "C:\Program Files\AngleGame\AngleGame.exe" -Description "Play Angle Game"
-                                </argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 </project>
