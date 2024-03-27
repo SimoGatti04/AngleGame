@@ -126,13 +126,6 @@
                 </configuration>
                 </plugin>
 
-            <!--plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-            </plugin-->
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -152,34 +145,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.1.0</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>gioco.angolo.MainApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin-->
-            <!--plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>gioco.angolo.MainApplication</mainClass>
-                        </manifest>
-                    </archive>
-                    <descriptorRefs>
-                        <descriptorRef>
-                        </descriptorRef>
-                    </descriptorRefs>
-                </configuration>
-            </plugin-->
             <plugin>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.2.1</version>
@@ -275,7 +240,7 @@
                                     <arg value="gioco.angolo.Main"/>
 
                                     <arg value="--runtime-image"/>
-                                    <arg value="C:\Users\simog\Documents\GitHub\AngleGame\jre"/>
+                                    <arg value="C:\Users\simog\Documents\GitHub\AngleGame\target\jre"/>
 
                                     <arg value="--type"/>
                                     <arg value="dmg"/>
@@ -287,7 +252,6 @@
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
 
             <plugin>
@@ -307,56 +271,30 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--plugin>
-                <groupId>org.panteleyev</groupId>
-                <artifactId>jpackage-maven-plugin</artifactId>
-                <version>1.6.3</version>
-
-                <configuration>
-                    <name>AngleGame</name>
-                    <appVersion>1.0</appVersion>
-                    <description>My game app</description>
-                    <vendor>My Company</vendor>
-                    <copyright>2022 My Company</copyright>
-                    <licenseFile>LICENSE.txt</licenseFile>
-                    <runtimeImage>${project.build.directory}/myruntime</runtimeImage>
-                    <mainClass>gioco.angolo.Main</mainClass>
-                </configuration>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
 
                 <executions>
                     <execution>
-                        <id>mac</id>
+                        <id>create-desktop-shortcut</id>
                         <phase>package</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
                         <configuration>
-                            <type>dmg</type>
-                            <icon>src/main/resources/icon.icns</icon>
-                            <dest>${project.build.directory}/dmg</dest>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>windows</id>
-                        <configuration>
-                            <type>exe</type>
-                            <icon>src/main/resources/icon.ico</icon>
-                            <dest>${project.build.directory}</dest>
-                            <winConsole>true</winConsole>
-                            <winDirChooser>true</winDirChooser>
-                            <winShortcut>true</winShortcut>
-                            <winMenu>true</winMenu>
-                        </configuration>
-                    </execution>
-
-                    <execution>
-                        <id>linux</id>
-                        <configuration>
-                            <type>deb</type>
-                            <icon>src/main/resources/icon.png</icon>
-                            <dest>${project.build.directory}</dest>
+                            <executable>powershell.exe</executable>
+                            <arguments>
+                                <argument>-Command</argument>
+                                <argument>
+                                    New-Item -Path $env:USERPROFILE\Desktop\AngleGame.lnk -TargetPath "C:\Program Files\AngleGame\AngleGame.exe" -Description "Play Angle Game"
+                                </argument>
+                            </arguments>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin-->
+            </plugin>
         </plugins>
     </build>
 </project>
