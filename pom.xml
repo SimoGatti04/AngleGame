@@ -231,7 +231,7 @@
                                     <arg value="AngleGame"/>
 
                                     <arg value="--input"/>
-                                    <arg value="/Users/gatti/Documents/Workspace/Angolo/target"/>
+                                    <arg value="/Users/gatti/Documents/GitHub/AngleGame/target"/>
 
                                     <arg value="--main-jar"/>
                                     <arg value="Angolo-1.0-SNAPSHOT.jar"/>
@@ -240,13 +240,13 @@
                                     <arg value="gioco.angolo.Main"/>
 
                                     <arg value="--runtime-image"/>
-                                    <arg value="/Users/gatti/Documents/Workspace/Angolo/target/jre"/>
+                                    <arg value="/Users/gatti/Documents/GitHub/AngleGame/target/jre"/>
 
                                     <arg value="--type"/>
                                     <arg value="dmg"/>
 
                                     <arg value="--dest"/>
-                                    <arg value="/Users/gatti/Documents/Workspace/Angolo/target"/>
+                                    <arg value="/Users/gatti/Documents/GitHub/AngleGame/target"/>
                                 </exec>
 
 
@@ -260,6 +260,28 @@
                                     <arg value="--compress=2"/>
                                     <arg value="--no-header-files"/>
                                     <arg value="--no-man-pages"/>
+                                </exec>
+                                <exec executable="jpackage" osfamily="windows" failonerror="true">
+                                    <arg value="--name"/>
+                                    <arg value="AngleGame"/>
+
+                                    <arg value="--input"/>
+                                    <arg value="C:\Users\simog\Documents\GitHub\AngleGame\target"/>
+
+                                    <arg value="--main-jar"/>
+                                    <arg value="Angolo-1.0-SNAPSHOT.jar"/>
+
+                                    <arg value="--main-class"/>
+                                    <arg value="gioco.angolo.Main"/>
+
+                                    <arg value="--runtime-image"/>
+                                    <arg value="C:\Users\simog\Documents\GitHub\AngleGame\jre"/>
+
+                                    <arg value="--type"/>
+                                    <arg value="dmg"/>
+
+                                    <arg value="--dest"/>
+                                    <arg value="C:\Users\simog\Documents\GitHub\AngleGame\target"/>
                                 </exec>
                             </target>
                         </configuration>
