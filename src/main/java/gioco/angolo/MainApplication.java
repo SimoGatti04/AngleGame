@@ -9,7 +9,7 @@ public class MainApplication extends Application {
         GameController gameController = new GameController();
         GameView gameView = new GameView(gameController);
         primaryStage.setScene(gameView.getScene());
-        primaryStage.setTitle("Indovina l'Angolo");
+        primaryStage.setTitle("Angle Game");
         primaryStage.show();
     }
 }

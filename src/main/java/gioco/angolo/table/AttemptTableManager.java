@@ -53,4 +53,8 @@ public class AttemptTableManager {
         // Pulisce tutti gli elementi dalla tabella
         attemptsTable.getItems().clear();
     }
+
+    public boolean primoTentativo(){
+        return attemptsTable.getItems().isEmpty();
+    }
 }

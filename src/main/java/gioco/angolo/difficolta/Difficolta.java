@@ -1,10 +1,10 @@
-package gioco.angolo;
+package gioco.angolo.difficolta;
 
 public enum Difficolta {
-    FACILE(5, 5),
-    MEDIO(4, 3),
-    DIFFICILE(4, 1),
-    ESTREMO(3,0);
+    EASY(5, 5),
+    MEDIUM(4, 3),
+    HARD(4, 1),
+    EXTREME(3,0);
 
     private final int tentativi;
     private final int tolleranza;

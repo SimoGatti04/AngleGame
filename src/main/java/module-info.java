@@ -17,4 +17,6 @@ module gioco.angolo {
     opens gioco.angolo.table to javafx.fxml;
     exports gioco.angolo.angle;
     opens gioco.angolo.angle to javafx.fxml;
+    exports gioco.angolo.difficolta;
+    opens gioco.angolo.difficolta to javafx.fxml;
 }

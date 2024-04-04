@@ -1,4 +1,4 @@
-package gioco.angolo;
+package gioco.angolo.angle;
 
 import gioco.angolo.angle.AngleDrawingUtility;
 import javafx.scene.canvas.GraphicsContext;
