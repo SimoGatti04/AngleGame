@@ -31,10 +31,10 @@ public class GameView {
         this.drawAngle = new DrawAngle();
         this.difficoltaScelta = new DialogoDifficolta();
 
-        initializeUI();
+        initializeGameUI();
     }
 
-    private void initializeUI() {
+    private void initializeGameUI() {
 
         Font.loadFont(getClass().getResourceAsStream("/gioco/angolo/GUI/Font_ComboBox.ttf"), 14);
 
@@ -58,6 +58,7 @@ public class GameView {
 
 
         Button submitButton = new Button("GUESS");
+        submitButton.getStylesheets().add(getClass().getResource("/gioco/angolo/GUI/styles/sendButtonStyle.css").toExternalForm());
         submitButton.setOnAction(e -> checkGuess());
         submitButton.getStyleClass().add("button-submitButton"); // Assicurati che il nome della classe corrisponda a quello definito nel CSS
 
@@ -67,12 +68,11 @@ public class GameView {
     }
 
     private void checkGuess() {
-        if (attemptTableManager.primoTentativo()){
-            difficoltaScelta.getComboBox().setDisable(true);
-            difficoltaScelta.getComboBox().setVisible(false);
-        }
         try {
             double userGuess = Double.parseDouble(guessField.getText());
+            if (userGuess < 0 || userGuess > 360) {
+                throw new NumberFormatException("L'angolo deve essere compreso tra 0 e 360 gradi");
+            }
             boolean isCorrect = gameController.checkGuess(userGuess);
 
             String angleComparison;
@@ -95,7 +95,13 @@ public class GameView {
                 drawAngle.drawAngle(canvas.getGraphicsContext2D(), gameController.getAngle());
             }
         } catch (NumberFormatException e) {
-            System.out.println("Per favore, inserisci un numero valido.");
+            System.out.println(e.getMessage());
+            guessField.setText("");
+            return;
+        }
+        if (attemptTableManager.primoTentativo()){
+            difficoltaScelta.getComboBox().setDisable(true);
+            difficoltaScelta.getComboBox().setVisible(false);
         }
         guessField.setText("");
     }
@@ -104,7 +110,7 @@ public class GameView {
     public Scene getScene() {
 
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/gioco/angolo/GUI/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/gioco/angolo/GUI/styles/style.css").toExternalForm());
 
         return scene;
     }

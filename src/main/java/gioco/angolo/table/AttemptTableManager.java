@@ -46,6 +46,7 @@ public class AttemptTableManager {
         attemptsTable.setPrefHeight(TableView.USE_COMPUTED_SIZE);
         attemptsTable.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
 
+        attemptsTable.getStylesheets().add(getClass().getResource("/gioco/angolo/GUI/styles/resultTableStyle.css").toExternalForm());
 
     }
 

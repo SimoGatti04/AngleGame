@@ -1,0 +1,13 @@
+/* send answer button style */
+.button-submitButton {
+    -fx-padding: 10 20 10 20;
+    -fx-font-size: 13 pt;
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+}
+.button-submitButton:hover {
+    -fx-background-color: #005A9E;
+}

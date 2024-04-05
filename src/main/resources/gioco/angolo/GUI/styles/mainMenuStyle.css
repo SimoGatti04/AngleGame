@@ -1,0 +1,17 @@
+/* main menu style */
+
+.root{
+    -fx-background-color: #01010D ;
+}
+
+.button {
+    -fx-alignment: center;
+    -fx-background-color: red;
+    -fx-font-size: 16;
+    -fx-text-fill: white;
+    -fx-padding: 10px, 20px;
+}
+
+.button:hover {
+    -fx-background-color: #005A9E;
+}
