@@ -23,17 +23,17 @@ public class AttemptTableManager {
 
         TableColumn<Attempt, Double> guessColumn = new TableColumn<>("Guess");
         guessColumn.setCellValueFactory(new PropertyValueFactory<>("guess"));
-        guessColumn.setPrefWidth(60); // Imposta una larghezza preferita
+        guessColumn.setPrefWidth(50); // Imposta una larghezza preferita
         guessColumn.setResizable(false);
 
-        TableColumn<Attempt, String> angleComparisonColumn = new TableColumn<>("Suggerimento");
+        TableColumn<Attempt, String> angleComparisonColumn = new TableColumn<>("Hint");
         angleComparisonColumn.setCellValueFactory(new PropertyValueFactory<>("angleComparison"));
-        angleComparisonColumn.setPrefWidth(100); // Imposta una larghezza preferita
+        angleComparisonColumn.setPrefWidth(50); // Imposta una larghezza preferita
         angleComparisonColumn.setResizable(false);
 
 
 
-        attemptsTable.setMaxWidth(190);
+        attemptsTable.setMaxWidth(135);
         attemptsTable.setEditable(false);
         attemptsTable.setPlaceholder(new Label(""));
 

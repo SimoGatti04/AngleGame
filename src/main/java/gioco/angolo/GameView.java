@@ -5,12 +5,13 @@ import gioco.angolo.angle.DrawAngle;
 import gioco.angolo.difficolta.DialogoDifficolta;
 import gioco.angolo.table.Attempt;
 import gioco.angolo.table.AttemptTableManager;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 
 
@@ -57,13 +58,31 @@ public class GameView {
         guessField.getStyleClass().add("guessField");
 
 
-        Button submitButton = new Button("GUESS");
+        Button submitButton = new Button("✔️");
         submitButton.getStylesheets().add(getClass().getResource("/gioco/angolo/GUI/styles/sendButtonStyle.css").toExternalForm());
         submitButton.setOnAction(e -> checkGuess());
         submitButton.getStyleClass().add("button-submitButton"); // Assicurati che il nome della classe corrisponda a quello definito nel CSS
 
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(20);
+        gridPane.setMaxWidth(250);
 
-        root.getChildren().addAll(canvas, guessField, submitButton, attemptTableManager.getAttemptsTable());
+        ColumnConstraints guessCol = new ColumnConstraints();
+        guessCol.setPrefWidth(120);
+        guessCol.setHalignment(HPos.RIGHT);
+
+
+        ColumnConstraints buttonCol = new ColumnConstraints();
+        submitButton.setPrefWidth(60);
+        buttonCol.setHalignment(HPos.LEFT);
+
+        gridPane.getColumnConstraints().addAll(guessCol, buttonCol);
+        gridPane.add(guessField, 0, 0);
+        gridPane.add(submitButton, 1, 0);
+
+
+        root.getChildren().addAll(canvas, gridPane, attemptTableManager.getAttemptsTable());
 
     }
 
@@ -77,10 +96,10 @@ public class GameView {
 
             String angleComparison;
             if (userGuess < gameController.getAngle()) {
-                angleComparison = ("Più alto");
+                angleComparison = ("higher");
             }
             else if (userGuess > gameController.getAngle()) {
-                angleComparison = ("Più basso");
+                angleComparison = ("lower");
             }
             else   {
                 angleComparison = ("Corretto");
